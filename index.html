@@ -101,7 +101,7 @@ body.intro-active { overflow:hidden; }
         <div class="scratch-surface" id="scratchSurface">
           <div class="scratch-under">
             <div class="sub">Save the date</div>
-            <div class="date">18th January, 2027</div>
+            <div class="date">17–18 January, 2027</div>
             <div class="sub">We can't wait to celebrate with you</div>
           </div>
           <canvas id="scratchCanvas" aria-label="Scratch this card to reveal the date"></canvas>
@@ -113,7 +113,7 @@ body.intro-active { overflow:hidden; }
         <div class="count-unit"><strong id="minutes">—</strong><span>Minutes</span></div>
         <div class="count-unit"><strong id="seconds">—</strong><span>Seconds</span></div>
       </div>
-      <p class="count-note" id="countNote">Counting down to 18 January 2027</p>
+      <p class="count-note" id="countNote">Counting down to 17–18 January 2027</p>
       <div class="petals" data-colors="#d7a65b,#e9c981,#fff0cc,#b7a46b"></div>
     </section>
 
@@ -338,8 +338,8 @@ body.intro-active { overflow:hidden; }
     window.addEventListener('resize', () => { if (!isScratching && !isRevealed) drawScratchFoil(); });
   }
 
-  // Wedding countdown: 18 January 2027 at midnight in the visitor's local time.
-  const target = new Date(2027, 0, 18, 0, 0, 0).getTime();
+  // Wedding countdown: 17–18 January 2027 at midnight in the visitor's local time.
+  const target = new Date(2027, 0, 17, 0, 0, 0).getTime();
   function updateCountdown() {
     const left = Math.max(0, target - Date.now());
     const vals = {
