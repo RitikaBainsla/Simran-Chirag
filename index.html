@@ -84,6 +84,7 @@ body.intro-active { overflow:hidden; }
     <video class="opening-video" id="openingVideo" src="Simran.mp4" poster="opening-poster.jpg" playsinline webkit-playsinline preload="auto" aria-label="Simran wedding opening video"></video>
     <div class="opening-prompt" id="openingPrompt">Tap to Open Invitation</div>
   </section>
+  <audio id="backgroundMusic" src="wedding-song.m4a" loop preload="none"></audio>
   <main id="invitation">
     <section class="page" aria-label="Invitation page 1">
       <img class="invite-image" src="chirag-simran-static.jpg" alt="Chirag and Simran wedding invitation cover">
@@ -113,7 +114,7 @@ body.intro-active { overflow:hidden; }
         <div class="count-unit"><strong id="minutes">—</strong><span>Minutes</span></div>
         <div class="count-unit"><strong id="seconds">—</strong><span>Seconds</span></div>
       </div>
-      <p class="count-note" id="countNote">Counting down to 17–18 January 2027</p>
+      <p class="count-note" id="countNote">Counting down to 17 January 2027</p>
       <div class="petals" data-colors="#d7a65b,#e9c981,#fff0cc,#b7a46b"></div>
     </section>
 
@@ -162,6 +163,7 @@ body.intro-active { overflow:hidden; }
   let opened = false;
   let videoStarted = false;
   const introPrompt = document.getElementById('openingPrompt');
+  const backgroundMusic = document.getElementById('backgroundMusic');
 
   function revealInvitation() {
     if (opened) return;
@@ -180,6 +182,10 @@ body.intro-active { overflow:hidden; }
     intro.classList.add('is-playing');
     if (introPrompt) introPrompt.textContent = 'Enjoy the Invitation';
     try {
+      if (backgroundMusic) {
+        backgroundMusic.volume = 0.72;
+        backgroundMusic.play().catch(() => {});
+      }
       await introVideo.play();
     } catch (error) {
       videoStarted = false;
@@ -338,7 +344,7 @@ body.intro-active { overflow:hidden; }
     window.addEventListener('resize', () => { if (!isScratching && !isRevealed) drawScratchFoil(); });
   }
 
-  // Wedding countdown: 17–18 January 2027 at midnight in the visitor's local time.
+  // Wedding countdown: 17 January 2027 at midnight in the visitor's local time.
   const target = new Date(2027, 0, 17, 0, 0, 0).getTime();
   function updateCountdown() {
     const left = Math.max(0, target - Date.now());
